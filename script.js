@@ -1,3 +1,9 @@
+function locationSelect(e) {
+  localStorage.setItem('location', JSON.stringify(e.target.value));
+}
+const loc = document.querySelector('.location');
+loc.addEventListener('click', locationSelect);
+localStorage.setItem('location', JSON.stringify(loc.value)); //setting default location
 let movieAry = JSON.parse(localStorage.getItem('movies'));
 if (movieAry == null) {
   movieAry = [];
@@ -35,21 +41,21 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     localStorage.setItem('movies', JSON.stringify(ary));
     ary = [
-      'Movie Name',
-      'Movie Name',
-      'Movie Name',
-      'Movie Name',
-      'Movie Name',
-      'Cool Movie',
-      'Old Movie',
-      'Fast Name',
-      'Slow Name',
-      'slow Name',
-      'slow Name',
-      'Movie fast',
-      'Movie New',
-      'New Name',
-      'Horrer Movie',
+      'Winter Wind',
+      'Dream Big',
+      'Be Optimistic',
+      'Lonely Time',
+      'This Is Who I Am',
+      'Hurricane Winds',
+      'Creation Power',
+      'Wall-E',
+      'Speed of Time',
+      'Emptyness',
+      'Thank You',
+      'Wall Streat Magic',
+      'Letters & Words',
+      'Fog Man',
+      'Annabella 4',
     ];
     localStorage.setItem('names', JSON.stringify(ary));
     sessionStorage.setItem('clickedMovieId', JSON.stringify(''));
@@ -58,7 +64,34 @@ document.addEventListener('DOMContentLoaded', function () {
 function notification() {
   window.location.href = 'notification.html';
 }
+function chengeBannerImage(e) {
+  // transform: translateX(-50%);
 
+  if (e.target.id == 'prev-button') {
+    const banner = document.querySelector('.advertisement-banner');
+    const style = getComputedStyle(banner);
+    let matricStr = style['transform'];
+
+    matricStr = matricStr.split(',');
+    let newValue = String(Number(matricStr[4]) - 250);
+    if (newValue < -1750) {
+      newValue = -1750;
+    }
+    banner.style['transform'] = `matrix(1, 0, 0, 1, ${newValue}, 0)`;
+  }
+  if (e.target.id == 'next-button') {
+    const banner = document.querySelector('.advertisement-banner');
+    const style = getComputedStyle(banner);
+    let matricStr = style['transform'];
+
+    matricStr = matricStr.split(',');
+    let newValue = String(Number(matricStr[4]) + 250);
+    if (newValue > -250) {
+      newValue = -280;
+    }
+    banner.style['transform'] = `matrix(1, 0, 0, 1, ${newValue}, 0)`;
+  }
+}
 movieAry.forEach((element) => {
   const mainBar = document.querySelector('.main-bar');
   const div = document.createElement('div');
@@ -136,4 +169,9 @@ function resetfun(e) {
     localStorage.removeItem('movies');
   }
 }
+
 reset.addEventListener('keypress', resetfun);
+const nextPrev1 = document.querySelector('#prev-button');
+nextPrev1.addEventListener('click', chengeBannerImage);
+const nextPrev2 = document.querySelector('#next-button');
+nextPrev2.addEventListener('click', chengeBannerImage);

@@ -17,6 +17,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Condensed&display=swap"
       rel="stylesheet"
+      id="myStylesheet"
     />
   </head>
   <body>
@@ -41,21 +42,85 @@
           <button class="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
+          <select class="location" id="location">
+            <option value="kollam">Kollam</option>
+            <option value="trivandrum">Trivandrum</option>
+            <option value="kochi">Kochi</option>
+            <option value="kochi">Current Location</option>
+          </select>
         </form>
         <i onclick="notification()" class="fa-regular fa-bell"></i>
       </div>
     </header>
-    <div class="body-bars">
-      <div class="side-bar" id="side-bar">
-        <a href="#">HOME</a>
-        <a href="#">OPTION</a>
-        <a href="#">OPTION</a>
-        <a href="#">OPTION</a>
-        <a href="#">OPTION</a>
+    <div class="side-bar" id="side-bar">
+      <a href="#">HOME</a>
+      <a href="#">OPTION</a>
+      <a href="#">OPTION</a>
+      <a href="#">OPTION</a>
+      <a href="#">OPTION</a>
+    </div>
+    <div class="advertisement-banner">
+      <div class="banner-image m1">
+        <img src="banerImg/m4.jpg" alt="Image 1" />
       </div>
+      <div class="banner-image m2">
+        <img src="banerImg/m10.jpg" alt="Image 2" />
+      </div>
+      <div class="banner-image m3">
+        <img src="banerImg/m9.jpg" alt="Image 3" />
+      </div>
+      <div class="banner-image m1">
+        <img src="banerImg/m1.jpg" alt="Image 1" />
+      </div>
+      <div class="banner-image m2">
+        <img src="banerImg/m10.jpg" alt="Image 2" />
+      </div>
+      <div class="banner-image m3">
+        <img src="banerImg/m4.jpg" alt="Image 3" />
+      </div>
+      <div class="banner-image m1">
+        <img src="banerImg/m1.jpg" alt="Image 1" />
+      </div>
+      <div class="banner-image m2">
+        <img src="banerImg/m10.jpg" alt="Image 2" />
+      </div>
+    </div>
+    <div class="body-bars">
       <div class="main-bar"></div>
     </div>
 
+    <button class="nav-button" id="prev-button">&LeftAngleBracket; Move</button>
+    <button class="nav-button" id="next-button">
+      Move &RightAngleBracket;
+    </button>
+    <footer>
+      <div class="find-us-div">
+        <div>Find Us On</div>
+        <div>
+          <a href="https://www.facebook.com/"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="https://www.instagram.com/"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="https://www.twitter.com/"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
+          <a href="https://www.google.com/"
+            ><i class="fa-brands fa-google"></i
+          ></a>
+          <a href="https://www.fa-snapchat.com/"
+            ><i class="fa-brands fa-snapchat"></i
+          ></a>
+        </div>
+        <div>
+          Powered by
+          <a href="https://www.google.com" class="w3-link" target="_blank"
+            >Google</a
+          >
+        </div>
+      </div>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
