@@ -260,9 +260,8 @@ body {
 #next-button {
   position: absolute;
   /* top: 2.2%; */
-  top: 250px;
+  top: 240px;
   /* top:210px */
-
   background-color: #333;
   color: #fff;
   border: none;

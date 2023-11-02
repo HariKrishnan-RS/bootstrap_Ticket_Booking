@@ -1,3 +1,8 @@
+// localStorage.setItem('tempDate', JSON.stringify('empty'));
+// localStorage.setItem('tempTheater', JSON.stringify('empty'));
+// localStorage.setItem('tempTime', JSON.stringify('empty'));
+// localStorage.setItem('tempSeats', JSON.stringify([]));
+// localStorage.setItem('allTicketAry', JSON.stringify([]));
 function locationSelect(e) {
   localStorage.setItem('location', JSON.stringify(e.target.value));
 }
@@ -170,8 +175,19 @@ function resetfun(e) {
   }
 }
 
+function move() {
+  $(function () {
+    const navButtons = document.querySelector('#prev-button');
+    console.log($(navButtons));
+    if (navButtons.style.top == '240px') {
+      avButtons.style.top = '300px';
+    }
+  });
+}
 reset.addEventListener('keypress', resetfun);
 const nextPrev1 = document.querySelector('#prev-button');
 nextPrev1.addEventListener('click', chengeBannerImage);
 const nextPrev2 = document.querySelector('#next-button');
 nextPrev2.addEventListener('click', chengeBannerImage);
+const bar = document.querySelector('.fa-bars');
+bar.addEventListener('click', move);
