@@ -32,19 +32,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0px;
   background-color: rgb(255, 255, 255);
   padding: 20px 50px;
   width: fit-content;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(187, 187, 187, 0.596);
 }
-body {
-  display: flex;
 
-  flex-direction: column;
-  align-items: center;
-}
 .screen {
   width: 30%;
   height: 10px;
@@ -165,3 +159,36 @@ body {
   margin-left: 0px;
   margin-bottom: 0px;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* .selection {
+  margin-top: 200px;
+}
+.date-div {
+  display: none;
+}
+.time-div {
+  display: none;
+}
+.theater-div {
+  display: none;
+}
+.footer {
+  display: none;
+}
+.screen {
+  display: none;
+}
+.front-screen {
+  display: none;
+}
+.seat-flex-box {
+  display: none;
+}
+.book-now {
+  display: none;
+} */

@@ -1,0 +1,124 @@
+* {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+:root {
+  /* --header-color: rgb(0, 57, 104);
+  --icon-color: rgba(255, 255, 255, 0.26);
+  --side-bar-color: rgb(3, 75, 134); */
+  --header-color: rgb(193, 204, 209);
+  --icon-color: rgba(255, 255, 255, 0.26);
+  --side-bar-color: rgb(117, 117, 117);
+}
+
+#about {
+  max-width: 800px;
+  margin: 20px auto;
+  margin-top: 100px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 700px) {
+  #search-box {
+    width: 100%;
+    min-width: 0px;
+  }
+}
+.n1 {
+  display: none !important;
+}
+
+@media (max-width: 567px) {
+  .n2 {
+    display: none;
+  }
+  .n1 {
+    display: inline !important;
+  }
+}
+.fa-bell:hover {
+  background-color: var(--icon-color);
+  padding: 7px;
+  border-radius: 50px;
+}
+.location {
+  background-color: var(--header-color) !important;
+  color: rgb(0, 0, 0) !important;
+  padding: 4px !important;
+  margin-right: 20px;
+  border: none;
+  outline: none;
+}
+
+.nav-item-last {
+  margin: 4px 0px !important;
+}
+
+.navbar-toggler {
+  padding: 0 !important;
+  width: 50px !important;
+  border: 0 !important;
+}
+.navbar {
+  position: relative;
+}
+.noti-div {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  right: 0px;
+  top: 65px;
+  background-color: rgba(248, 248, 248, 0.966);
+  border: 1px solid rgb(219, 219, 219);
+  border-top: 0;
+  display: none;
+}
+.tic {
+  padding: 5px 30px;
+  font-weight: 300;
+  font-size: 18px;
+  border: 1px solid white;
+  color: rgb(71, 71, 71);
+}
+.fa-bell {
+  font-size: 25px;
+  margin-left: 25px;
+  color: rgb(0, 0, 0);
+  padding: 7px;
+  font-weight: 100;
+}
+footer {
+  width: 100%;
+}
+.find-us-div {
+  margin-top: 40px;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+.find-us-div > div {
+  font-size: 20px;
+  padding: 25px;
+}
+
+.find-us-div div i {
+  padding-right: 0;
+  font-size: 25px;
+}
+.find-us-div div a {
+  color: white;
+  margin: 0px 5px;
+}
+.find-us-div div:last-child {
+  font-size: 19px;
+}
+.w3-link {
+  text-decoration: underline;
+  color: rgb(135, 189, 243);
+}
+.w3-link:hover {
+  color: rgb(0, 152, 0);
+}

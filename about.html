@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="aboutStyle.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+      id="myStylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!-- 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main_menu"
+          data-bs-target="#main_menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href=""
+          ><img
+            src="images/png-transparent-film-reel-cinema-film-movie-reel-thumbnail-removebg-preview.png"
+            alt=""
+            width="40"
+            height="40"
+          />
+          MovieQ</a
+        >
+
+        <div class="collapse navbar-collapse" id="main_menu">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#myModal"
+                href=""
+                >Join</a
+              >
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="">Service</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Contact</a>
+            </li>
+
+            <li class="nav-item d-flex nav-item-last">
+              <select class="nav-link location" id="location">
+                <option value="kollam">Kollam</option>
+                <option value="trivandrum">Trivandrum</option>
+                <option value="kochi">Kochi</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section id="about">
+      <h1>About Us</h1>
+      <p>
+        Welcome to Movie Ticket Booking, your one-stop destination for booking
+        movie tickets online. We are dedicated to making your movie-going
+        experience convenient and enjoyable.
+      </p>
+      <p>
+        At Movie Ticket Booking, we offer a wide selection of movies, showtimes,
+        and theaters. You can browse movie details, check showtimes, and book
+        your tickets with ease.
+      </p>
+      <p>
+        Our mission is to provide you with a seamless movie ticket booking
+        experience. We are committed to delivering the latest movies, secure
+        online transactions, and excellent customer support.
+      </p>
+      <a class="btn btn-secondary" href="index.html">Back</a>
+    </section>
+
+    <footer id="footer">
+      <div class="find-us-div">
+        <div>Find Us On</div>
+        <div>
+          <a href="https://www.facebook.com/"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="https://www.instagram.com/"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="https://www.twitter.com/"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
+          <a href="https://www.google.com/"
+            ><i class="fa-brands fa-google"></i
+          ></a>
+          <a href="https://www.fa-snapchat.com/"
+            ><i class="fa-brands fa-snapchat"></i
+          ></a>
+        </div>
+        <div>
+          Powered by
+          <a href="https://www.google.com" class="w3-link" target="_blank"
+            >Google</a
+          >
+        </div>
+      </div>
+    </footer>
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Join Our Community
+            </h5>
+          </div>
+          <div class="modal-body d-flex justify-content-between p-4">
+            <button type="button" class="btn btn-success" data-dismiss="modal">
+              Join Now
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Not Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="aboutScript.js"></script>
+  </body>
+</html>

@@ -158,7 +158,7 @@ function dateClicked(e) {
   const day = $($(target).children()[1]).text();
   const tempTheater = JSON.parse(localStorage.getItem('tempTheater'));
   const id = loc + month + day;
-  if (tempTheater == 'empty') {
+  if (true) {
     if (JSON.parse(localStorage.getItem('tempDate')) != id) {
       $($(target).children()[1]).css('backgroundColor', 'lightGreen');
       currentDay = $($(target).children()[1]).text();
@@ -177,7 +177,12 @@ function theaterClicked(e) {
   const theaterName = $(target).text();
   const tempTime = JSON.parse(localStorage.getItem('tempTime'));
   const tempDate = JSON.parse(localStorage.getItem('tempDate'));
-  if (tempDate != 'empty' && tempTime == 'empty') {
+  const tempSeat = JSON.parse(localStorage.getItem('tempSeats'));
+  if (tempSeat.length) {
+    localStorage.setItem('tempSeats', JSON.stringify([]));
+    priceUpdate();
+  }
+  if (true) {
     const id = tempDate + theaterName;
     if (JSON.parse(localStorage.getItem('tempTheater')) != id) {
       $(target).css('backgroundColor', 'lightGreen');
@@ -197,7 +202,7 @@ function timeClicked(e) {
   const time = $(target).attr('class').split(' ')[1];
   const tempTheater = JSON.parse(localStorage.getItem('tempTheater'));
   const tempTime = JSON.parse(localStorage.getItem('tempTime'));
-  if (tempTheater != 'empty') {
+  if (true) {
     const id = tempTheater + time;
     if (JSON.parse(localStorage.getItem('tempTime')) != id) {
       // console.log(JSON.parse(localStorage.getItem('tempTime')), id);
@@ -231,7 +236,11 @@ function priceUpdate() {
   $('.price').text(`Total Price :${price} /-`);
 }
 function seatSelected(e) {
-  if (JSON.parse(localStorage.getItem('tempTime')) != 'empty') {
+  if (
+    JSON.parse(localStorage.getItem('tempTime')) != 'empty' &&
+    JSON.parse(localStorage.getItem('tempTheater')) != 'empty' &&
+    JSON.parse(localStorage.getItem('tempDate')) != 'empty'
+  ) {
     function write(id) {
       let tempSeats = JSON.parse(localStorage.getItem('tempSeats'));
       tempSeats.push(id);
@@ -272,6 +281,7 @@ function conform(e) {
       ary['time'] = currentTime;
       ary['seats'] = JSON.parse(localStorage.getItem('tempSeats'));
       ary['movieId'] = JSON.parse(sessionStorage.getItem('clickedMovieId'));
+      ary['name'] = JSON.parse(localStorage.getItem('SelectedmovieName'));
       const allTicketary = JSON.parse(localStorage.getItem('allTicketAry'));
       allTicketary.push(ary);
       localStorage.setItem('allTicketAry', JSON.stringify(allTicketary));
