@@ -360,19 +360,6 @@ body {
   width: 100%;
 }
 
-#prev-button,
-#next-button {
-  position: absolute;
-  /* top: 2.2%; */
-  top: 240px;
-  /* top:210px */
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
 #prev-button {
   left: 10px;
 }
@@ -381,6 +368,8 @@ body {
 }
 footer {
   width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 .find-us-div {
   margin-top: 40px;
