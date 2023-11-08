@@ -81,4 +81,6 @@ p {
 }
 .space{
   height:100%;
+  background-Color="red";
+  width:10px;
 }
