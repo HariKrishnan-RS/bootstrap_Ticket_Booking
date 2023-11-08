@@ -311,8 +311,8 @@ body {
   padding: 10px;
 }
 .card:hover {
-  box-shadow: 0px 0px 10px rgba(190, 190, 190, 0.479);
-  border: 1px solid rgb(71, 223, 250);
+  box-shadow: 0px 0px 15px rgba(99, 211, 255, 0.555);
+  border: 1px solid rgb(146, 239, 255);
 }
 .card {
   background-color: #ececec !important;
@@ -452,7 +452,8 @@ option:nth-child(5) {
   right: 0px;
   position: absolute;
   background-color: #fd8181;
-  font-size: 15px;
+  font-size: 12px;
+  font-weight: bold;
   color: rgb(0, 0, 0);
   width: 17px;
   height: 17px;
@@ -461,4 +462,7 @@ option:nth-child(5) {
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+}
+.tic:hover {
+  background-color: rgb(230, 230, 230);
 }

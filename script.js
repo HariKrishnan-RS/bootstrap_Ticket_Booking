@@ -1,9 +1,12 @@
-// localStorage.setItem('tempDate', JSON.stringify('empty'));
-// localStorage.setItem('tempTheater', JSON.stringify('empty'));
-// localStorage.setItem('tempTime', JSON.stringify('empty'));
-// localStorage.setItem('tempSeats', JSON.stringify([]));
-// localStorage.setItem('allTicketAry', JSON.stringify([]));
+localStorage.setItem('tempDate', JSON.stringify('empty'));
+localStorage.setItem('tempTheater', JSON.stringify('empty'));
+localStorage.setItem('tempTime', JSON.stringify('empty'));
+localStorage.setItem('tempSeats', JSON.stringify([]));
+if (!localStorage.getItem('allTicketAry')) {
+  localStorage.setItem('allTicketAry', JSON.stringify([]));
+}
 localStorage.setItem('SelectedmovieName', JSON.stringify(''));
+localStorage.setItem('homeBadgeCount', JSON.stringify('1'));
 let flag = 0;
 function locationSelect(e) {
   if (e.target.value == 'auto') {
@@ -42,34 +45,16 @@ let movieId = 0;
 let nameary = JSON.parse(localStorage.getItem('names'));
 let i = 0;
 document.addEventListener('DOMContentLoaded', function () {
+  $('.icon-badge').css('display', 'none');
+
   const locc = document.querySelector('.location');
   locc.selectedIndex = 0;
-  if (
-    !localStorage.getItem('T1') &&
-    !localStorage.getItem('T2') &&
-    !localStorage.getItem('T3')
-  ) {
+  if (true) {
     localStorage.setItem('T1', JSON.stringify([]));
     localStorage.setItem('T2', JSON.stringify([]));
     localStorage.setItem('T3', JSON.stringify([]));
 
-    let ary = [
-      'm1',
-      'm2',
-      'm3',
-      'm4',
-      'm5',
-      'm6',
-      'm7',
-      'm8',
-      'm9',
-      'm10',
-      'm11',
-      'm12',
-      'm13',
-      'm14',
-      'm15',
-    ];
+    let ary = ['m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'm9', 'm10'];
     localStorage.setItem('movies', JSON.stringify(ary));
     ary = [
       'Winter Wind',
@@ -82,14 +67,16 @@ document.addEventListener('DOMContentLoaded', function () {
       'Wall-E',
       'Speed of Time',
       'Emptyness',
-      'Thank You',
-      'Wall Streat Magic',
-      'Letters & Words',
-      'Fog Man',
-      'Annabella 4',
     ];
     localStorage.setItem('names', JSON.stringify(ary));
     sessionStorage.setItem('clickedMovieId', JSON.stringify(''));
+  }
+  const homeBadge = Number(JSON.parse(localStorage.getItem('homeBadgeCount')));
+  const localBadge = Number(JSON.parse(localStorage.getItem('bookBadgeCount')));
+  console.log(homeBadge, localBadge);
+  if (homeBadge != localBadge) {
+    $('.icon-badge').text('');
+    $('.icon-badge').css('display', 'block');
   }
 });
 function notification() {
@@ -127,11 +114,11 @@ function updateNotifTickets() {
   const notifDiv = document.getElementById('notif-div');
   const localTicketAry = JSON.parse(localStorage.getItem('allTicketAry'));
   for (let i = 0; i < localTicketAry.length; i++) {
-    notifDiv.innerHTML += `<div class="tic" id="ticket${i}">movie: ${localTicketAry[i]['name']}</div>`;
+    notifDiv.innerHTML += `<div class="tic" id="ticket${i}" onClick="notification();" style="cursor: pointer;">movie: ${localTicketAry[i]['name']}</div>`;
   }
   //update badge
   $(function () {
-    $('.icon-badge').text(localTicketAry.length);
+    // $('.icon-badge').text(localTicketAry.length);
   });
 }
 updateNotifTickets();
@@ -186,6 +173,7 @@ function clicked(e) {
     'SelectedmovieName',
     JSON.stringify(e.target.parentElement.firstElementChild.innerText)
   );
+  localStorage.setItem('homeBadgeCount', JSON.stringify('1'));
   // console.log(e.target.className);
   if (e.target.className == 'search-form') {
     e.target.preventDefault();
@@ -242,12 +230,11 @@ function move() {
 }
 reset.addEventListener('keypress', resetfun);
 
-// const bar = document.querySelector('.fa-bars');
-// bar.addEventListener('click', move);
-
 const notif = document.getElementById('notif-icon');
 
 function notiff(e) {
+  $('.icon-badge').css('display', 'none');
+  localStorage.setItem('bookBadgeCount', JSON.stringify('1'));
   if (flag == 0) {
     const elm = document.getElementById('notif-div');
     $(elm).slideDown(150);

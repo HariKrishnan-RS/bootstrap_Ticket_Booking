@@ -1,5 +1,8 @@
-body {
+.ticket-body {
+  margin-top: 65px;
+  padding: 20px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
   background-color: rgb(228, 228, 228);
@@ -12,14 +15,14 @@ h1 {
   color: red;
 }
 .ticketImg {
-  max-width: 200px;
+  max-width: 230px;
   border-radius: 10px;
 }
 .ticket {
   display: flex;
   flex-direction: column;
   border: 1px solid rgb(224, 224, 224);
-  max-width: 200px;
+  max-width: 230px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(153, 153, 153, 0.479);
@@ -37,4 +40,42 @@ h1 {
 }
 .info p:last-child {
   color: grey;
+}
+footer {
+  width: 100%;
+}
+p {
+  font-size: 13px;
+}
+.find-us-div {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+.find-us-div > div {
+  font-size: 20px;
+  padding: 25px;
+}
+
+.find-us-div div i {
+  padding-right: 0;
+  font-size: 25px;
+}
+.find-us-div div a {
+  color: white;
+  margin: 0px 5px;
+}
+.find-us-div div:last-child {
+  font-size: 19px;
+}
+.w3-link {
+  text-decoration: underline;
+  color: rgb(135, 189, 243);
+}
+.w3-link:hover {
+  color: rgb(0, 152, 0);
 }

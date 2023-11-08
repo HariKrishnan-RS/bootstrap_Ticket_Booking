@@ -1,57 +1,95 @@
 // // add date array to Local storage
-// const dateAry = ['20', '21', '22', '23', '24', '25', '26', '27', '28'];
-// localStorage.setItem('dates', JSON.stringify(dateAry));
+const DateAry = [
+  '10',
+  '11',
+  '12',
+  '13',
+  '14',
+  '15',
+  '16',
+  '17',
+  '18',
+  '19',
+  '20',
+  '21',
+  '22',
+  '23',
+  '24',
+  '25',
+  '26',
+  '27',
+  '28',
+  '29',
+  '30',
+  '31',
+];
+localStorage.setItem('dates', JSON.stringify(DateAry));
 // //add month array to local storage
-// const monthAry = [
-//   'OCT',
-//   'OCT',
-//   'OCT',
-//   'OCT',
-//   'OCT',
-//   'OCT',
-//   'OCT',
-//   'OCT',
-//   'OCT',
-// ];
-// localStorage.setItem('months', JSON.stringify(monthAry));
-// //add location adn their theaters and time as 2d array
-// const data = {
-//   'kollam': {
-//     'theater': ['Revathy', 'Archana', 'PVR', 'Pranav', 'PVR-2'],
-//     'time': ['10:00 Am', '11:30 Am', '12:30 Am', '01:40 Pm', '03:00 Pm'],
-//   },
-//   'trivandrum': {
-//     'theater': [
-//       'Wonder',
-//       'PVR-3',
-//       'Pranavam',
-//       'PVR-4',
-//       'Revathy-2',
-//       'Aradhana',
-//     ],
-//     'time': [
-//       '10:00 Am',
-//       '11:30 Am',
-//       '12:30 Am',
-//       '01:40 Pm',
-//       '03:00 Pm',
-//       '01:40 Pm',
-//       '03:00 Pm',
-//     ],
-//   },
-//   'kochi': {
-//     'theater': ['Pranavam', 'JBL', 'PVR-5', 'Clarity', 'Crystal'],
-//     'time': ['10:00 Am', '11:30 Am', '12:30 Am'],
-//   },
-// };
-// localStorage.setItem('data', JSON.stringify(data));
+const MonthAry = [
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+  'OCT',
+];
+localStorage.setItem('months', JSON.stringify(MonthAry));
+//add location adn their theaters and time as 2d array
+const data = {
+  'kollam': {
+    'theater': ['Revathy', 'Archana', 'PVR', 'Pranav', 'PVR-2'],
+    'time': ['10:00 Am', '11:30 Am', '12:30 Am', '01:40 Pm', '03:00 Pm'],
+  },
+  'kochi': {
+    'theater': ['Pranavam', 'JBL', 'PVR-5', 'Clarity', 'Crystal'],
+    'time': ['10:00 Am', '11:30 Am', '12:30 Am'],
+  },
+  'Thiruvananthapuram': {
+    'theater': [
+      'Crystal',
+      'Diamond',
+      'MovieVilla',
+      'Monopoly',
+      'ShowTime',
+      'Magicals',
+    ],
+    'time': [
+      '10:00 Am',
+      '11:30 Am',
+      '12:30 Am',
+      '10:40 Pm',
+      '11:50 Pm',
+      '12:00 Am',
+    ],
+  },
+};
+localStorage.setItem('data', JSON.stringify(data));
 localStorage.setItem('tempDate', JSON.stringify('empty'));
 localStorage.setItem('tempTheater', JSON.stringify('empty'));
 localStorage.setItem('tempTime', JSON.stringify('empty'));
 localStorage.setItem('tempSeats', JSON.stringify([]));
+localStorage.setItem('bookBadgeCount', JSON.stringify('1'));
+localStorage.setItem('SeatCount', JSON.stringify(''));
 // localStorage.setItem('allTicketAry', JSON.stringify([]));
 ////
 ////
+let currentSelection = 0;
 let currentTheater = '';
 let currentTime = '';
 let currentSeats = [];
@@ -60,11 +98,14 @@ function readFromLocal(key) {
   const ary = localStorage.getItem(key);
   return JSON.parse(ary);
 }
-
+const LocalLoc = JSON.parse(localStorage.getItem('location'));
+const bookLoc = document.getElementById('selectedLocation');
+bookLoc.innerText = LocalLoc;
 function makeTheaterGrid(location) {
+  // console.log(location);
   const dataAry = readFromLocal('data');
   currentLocationObj = dataAry[location];
-  currentTheaterAry = currentLocationObj['theater'];
+  let currentTheaterAry = currentLocationObj['theater'];
   currentTheaterAry.forEach((theaterName) => {
     const divStr = `<div class="theater" id="${theaterName}">${theaterName}</div>`;
     $('.theater-div').append(divStr);
@@ -74,7 +115,7 @@ function makeTheaterGrid(location) {
 function makeTimeGrid(location) {
   const dataAry = readFromLocal('data');
   currentLocationObj = dataAry[location];
-  currentTimeAry = currentLocationObj['time'];
+  let currentTimeAry = currentLocationObj['time'];
   currentTimeAry.forEach((time) => {
     let t = time.replace(' ', '-');
     t = t.replace(':', '-');
@@ -132,9 +173,34 @@ const loc = readFromLocal('location');
 
 $(function () {
   //make date grid
+  let week = [
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+    'Monday',
+  ];
   for (let i = 0; i < dateAry.length; i++) {
     let div = $('<div>');
     let p1 = $('<p>');
+    let p3 = $('<p>');
     let p2 = $('<p>');
     div.addClass('date');
     p1.addClass('month');
@@ -142,6 +208,9 @@ $(function () {
     p2.addClass('day');
     p2.text(dateAry[i]);
     p2.attr('id', `${loc + monthAry[i] + dateAry[i]}`);
+    p3.text(week[i]);
+    p3.addClass('weekName');
+    p1.append(p3);
     div.append(p1);
     div.append(p2);
     $('.date-div').append(div);
@@ -151,11 +220,17 @@ $(function () {
   makeSeatGrid();
   giveIdToSeats();
 });
+/////////
+document.addEventListener('DOMContentLoaded', function () {
+  $('#yesNoModal3').modal('show');
+});
 //event handling
 function dateClicked(e) {
   const target = e.currentTarget;
-  const month = $($(target).children()[0]).text();
+  let month = $($(target).children()[0]).text();
   const day = $($(target).children()[1]).text();
+  month = month.slice(0, 3);
+
   const tempTheater = JSON.parse(localStorage.getItem('tempTheater'));
   const id = loc + month + day;
   if (true) {
@@ -190,10 +265,10 @@ function theaterClicked(e) {
       currentTheater = $(target).text();
       const tempTheater = '#' + JSON.parse(localStorage.getItem('tempTheater'));
       localStorage.setItem('tempTheater', JSON.stringify(id));
-      $(`${tempTheater}`).css('backgroundColor', 'white');
+      $(`${tempTheater}`).css('backgroundColor', 'rgba(255, 147, 147, 0.349)');
     } else {
       localStorage.setItem('tempTheater', JSON.stringify('empty'));
-      $(target).css('backgroundColor', 'white');
+      $(target).css('backgroundColor', 'rgba(255, 147, 147, 0.349)');
     }
   }
 }
@@ -235,6 +310,7 @@ function priceUpdate() {
   const price = 270 * count;
   $('.price').text(`Total Price :${price} /-`);
 }
+let currentSeatCount = 0;
 function seatSelected(e) {
   if (
     JSON.parse(localStorage.getItem('tempTime')) != 'empty' &&
@@ -259,21 +335,35 @@ function seatSelected(e) {
     const tempSelectedSeats = JSON.parse(localStorage.getItem('tempSeats'));
     if (tempTime != 'empty') {
       if (tempSelectedSeats.indexOf[id] != -1) {
-        if (target.style.backgroundColor != 'rgb(61, 255, 93)') {
-          target.style.backgroundColor = 'rgb(61, 255, 93)';
-          write(id);
-        } else {
-          target.style.backgroundColor = 'rgb(163, 160, 160)';
-          del(id);
+        if (true) {
+          if (
+            target.style.backgroundColor == 'rgb(163, 160, 160)' &&
+            Number(JSON.parse(localStorage.getItem('SeatCount'))) >
+              currentSeatCount
+          ) {
+            target.style.backgroundColor = 'rgb(61, 255, 93)';
+            currentSeatCount++;
+            write(id);
+          } else if (target.style.backgroundColor == 'rgb(61, 255, 93)') {
+            target.style.backgroundColor = 'rgb(163, 160, 160)';
+            currentSeatCount--;
+            del(id);
+          }
         }
       }
     }
   }
 }
-function conform(e) {
-  if (window.confirm('Are you sure you want to continue?')) {
+let isButtonClicked = 0;
+function yesOrNoSelection(e) {
+  if (e.target.id == 'no-btn') {
+    $('#yesNoModal').modal('hide');
+  } else if (e.target.id == 'yes-btn') {
+    $('#yesNoModal').modal('hide');
     const tempSeats = JSON.parse(localStorage.getItem('tempSeats')).length;
     if (tempSeats) {
+      $('#success_tic').modal('show');
+      localStorage.setItem('SeatCount', JSON.stringify(''));
       const ary = {};
       ary['location'] = loc;
       ary['day'] = currentDay;
@@ -287,11 +377,81 @@ function conform(e) {
       localStorage.setItem('allTicketAry', JSON.stringify(allTicketary));
       localStorage.setItem('tempSeats', JSON.stringify([]));
       priceUpdate();
+      //update notification badge
+      localStorage.setItem(
+        'bookBadgeCount',
+        JSON.stringify(
+          String(Number(JSON.parse(localStorage.getItem('homeBadgeCount'))) + 1)
+        )
+      );
     } else {
-      alert('select seats first');
+      $('#yesNoModal2').modal('show');
     }
-  } else {
-    console.log('canceled.');
+  } else if (e.target.id == 'no-btn-seats') {
+    $('#yesNoModal2').modal('hide');
+  }
+}
+
+function conform(e) {
+  $('#yesNoModal').modal('show');
+}
+// else {
+//   console.log('canceled.');
+// }
+
+function selectionClick(e) {
+  if (e.target.id == 'selection-next-btn') {
+    if (currentSelection == 0) {
+      localStorage.setItem('SeatCount', JSON.stringify($('.seat-count').val()));
+      currentSelection++;
+      $('.date-div').css('display', 'none');
+      $('.theater-div').css('display', 'flex');
+      $('.selection-heading').text('Select Theater');
+      $('.book-now').css('display', 'none');
+    } else if (currentSelection == 1) {
+      currentSelection++;
+      $('.theater-div').css('display', 'none');
+      $('.time-div').css('display', 'flex');
+      $('.selection-heading').text('Select Time');
+      $('.book-now').css('display', 'none');
+    } else if (currentSelection == 2) {
+      currentSelection++;
+      $('.time-div').css('display', 'none');
+      $('.seat-flex-box').css('display', 'flex');
+      $('.selection-heading').text('Select Seats');
+      $('.footer').css('display', 'flex');
+      $('.screen').css('display', 'flex');
+      $('.front-screen').css('display', 'flex');
+      $('.selection').css('marginBottom', '30px');
+      $('#selection-next-btn').css('display', 'none');
+      $('.book-now').css('display', 'flex');
+    }
+  }
+  if (e.target.id == 'selection-back-btn') {
+    if (currentSelection == 2) {
+      currentSelection--;
+      $('.time-div').css('display', 'none');
+      $('.theater-div').css('display', 'flex');
+      $('.selection-heading').text('Select Theater');
+      $('.book-now').css('display', 'none');
+    } else if (currentSelection == 1) {
+      currentSelection--;
+      $('.theater-div').css('display', 'none');
+      $('.date-div').css('display', 'grid');
+      $('.selection-heading').text('Select Date');
+      $('.book-now').css('display', 'none');
+    } else if (currentSelection == 3) {
+      currentSelection--;
+      $('.time-div').css('display', 'flex');
+      $('.seat-flex-box').css('display', 'none');
+      $('.selection-heading').text('Select Time');
+      $('.footer').css('display', 'none');
+      $('.screen').css('display', 'none');
+      $('.front-screen').css('display', 'none');
+      $('.selection').css('marginBottom', '100px');
+      $('#selection-next-btn').css('display', 'flex');
+      $('.book-now').css('display', 'none');
+    }
   }
 }
 $(function () {
@@ -300,6 +460,7 @@ $(function () {
   $('.time').on('click', timeClicked);
   $('.seat').on('click', seatSelected);
   $('.book-now').on('click', conform);
+  $('.selection-button-div').on('click', selectionClick);
 });
 
 function update(e) {
@@ -345,3 +506,5 @@ function update(e) {
 $(function () {
   $('body').on('click', update);
 });
+$('#yesNoModal').on('click', yesOrNoSelection);
+$('#yesNoModal2').on('click', yesOrNoSelection);
