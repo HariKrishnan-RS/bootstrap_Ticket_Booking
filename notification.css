@@ -79,3 +79,8 @@ p {
 .w3-link:hover {
   color: rgb(0, 152, 0);
 }
+.space{
+  height:100%;
+  background-Color:"red";
+  width:10px;
+}
