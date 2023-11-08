@@ -54,7 +54,19 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('T2', JSON.stringify([]));
     localStorage.setItem('T3', JSON.stringify([]));
 
-    let ary = ['m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'm9', 'm10'];
+    let ary = [
+      'm1',
+      'm2',
+      'm3',
+      'm4',
+      'm5',
+      'm6',
+      'm7',
+      'm8',
+      'm9',
+      'm10',
+      'm11',
+    ];
     localStorage.setItem('movies', JSON.stringify(ary));
     ary = [
       'Winter Wind',
@@ -67,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'Wall-E',
       'Speed of Time',
       'Emptyness',
+      'Valey Of Fear',
     ];
     localStorage.setItem('names', JSON.stringify(ary));
     sessionStorage.setItem('clickedMovieId', JSON.stringify(''));
@@ -154,6 +167,10 @@ movieAry.forEach((element) => {
   div.appendChild(div2);
   mainBar.appendChild(div);
 });
+const mainBar = document.querySelector('.main-bar');
+const div = document.createElement('div');
+div.className = 'None';
+mainBar.appendChild(div);
 ////////////////////////////////
 function closed(e) {
   if (!(e.target.className == 'fa-regular fa-bell n2')) {
